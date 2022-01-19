@@ -1,0 +1,7 @@
+docker run -d  -it -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" -e "bootstrap.memory_lock=false" --name elasticsearch -v /elk/esdatadir:/usr/share/elasticsearch/data elasticsearch:7.14.0
+
+
+docker run  -it -d --restart=always --log-opt max-size=100m -p 5005:5005 -v /elk/stash-config/:/usr/share/logstash/config/  docker.elastic.co/logstash/logstash:7.14.0
+
+
+docker run -it -d --rm --name kibana -e "ELASTICSEARCH_HOSTS=http://172.17.0.1:9200" -p 5601:5601  kibana:7.14.0
