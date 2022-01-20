@@ -22,8 +22,9 @@
 ## III.System Design
 ### 1.Architecture design
 
-<center><img src="images/frame1.png" width="80%"></center>
 ​	We divide the system into three subsystems :
+
+<center><img src="images/frame1.png" width="80%"></center>
 
 ### 2.single-charging-client
 
