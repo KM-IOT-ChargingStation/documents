@@ -72,39 +72,39 @@ com.kingmeter.dto.charging.old:
 
 ​		The socket core tool “module” encapsulates the server program as the underlying code of the server side and the simulated test client side, including encoding and decoding, device information management, etc. The contents of the package are explained in turn as follows:
 
-#### application : 
+application : 
 
 ​		The socket command is sent, and the information reported by the charging pile is obtained by polling.
 
-#### business : 
+business : 
 
 ​		Process the information reported by the iot device, and dispatch the information to the business processing class RequestStrategy (kingmeter-socket-charging will implement the RequestStrategy interface, and the strategy mode is used here).
 
-##### codec :
+codec :
 
 ​		The communication between the iot device and the server is based on a set of custom codec protocols in the form of fixed-length messages. When decoding, the received byte stream is unpacked, and the byte array corresponding to a complete message is passed to the ClientHandler or ServerHandler under the role package for processing. When encoding, the ResponseBody is encoded into the byte stream required for communication and sent out by the SocketChannel.
 
-##### config :
+config :
 
 ​		According to the custom codec protocol, the content at the beginning of the message, the content at the end, and the length of the message are obtained from the configuration file, so that it can be configured flexibly, because our company not only has charging piles, but also intelligent horseshoe locks. Front mortise lock and single iron stake are all built on this module, and kingmeter-socket-charging is just one of them.
 
-##### dto:
+dto:
 
 ​		It is mainly the base class that encapsulates the interaction data model between iot devices and servers. Based on this module, the upper-level modules such as kingmeter-socket-charging will be parsed into different data model implementations according to different function codes.
 
-##### idletrigger :
+idletrigger :
 
 ​		The netty server or client will monitor the message sent by the other end, and every time a message is received, it will restart the timing. If the other party's information is not received in particular period, it is considered that the other party is disconnected and will force the communication of the other party to be disconnected.
 
-##### role : 
+role : 
 
 ​		It is divided into two roles: client and server. Client is mainly used by the underlying framework package used when the upper layer is implemented as the client side, and server is used by the server side. The respective ChannelInitializer will be configured with idleTiger, codec, and business handler implementation. .
 
-##### strategy :
+strategy :
 
 ​		Strategy pattern parent class which is mainly used to forward the message to the specific business layer after receiving it.
 
-#### util : 
+util : 
 
 ​		CacheUtil mainly caches the hardware information that has been connected, because these hardware information will only have meaning when the connection between the two parties is successful, and in order to ensure the speed of reading and writing, it can only be stored in memory, no need to persist into a hard disk or database. Of course, the business system can back up a copy of the corresponding information at the same time, which is convenient for the business management system to query and use.
 
@@ -112,25 +112,25 @@ com.kingmeter.dto.charging.old:
 
 ​		Based on kingmeter-socket-framework, it is implemented for charging piles. Parallel to this module and modules similar to kingmeter-socket-smartlock, kingmeter-socket-frontlock, etc. can be implemented.
 
-#### acl : 
+acl : 
 
 ​		acl is the abbreviation of Anticorruption Layer. It borrows the concept of domain driven design and is mainly used to isolate the underlying communication and business logic, so that all parties do not interfere with each other and achieve isolation and decoupling.
 
 #### Business:
 
-##### 	code : 	
+code : 	
 
 ​			Established according to the function code calibrated on the charging pile tcp communication protocol document.
 
-##### 	stragegy : 	
+stragegy : 	
 
 ​			All classes in this package implement RequestStrategy, and each function code has 	a corresponding specific implementation. This is the embodiment of the strategy pattern.
 
-##### 	tracker :	 
+tracker :	 
 
 ​			This is used for ota remote upgrade. We implement ota remote upgrade. 
 
-##### 	The steps are as follows:
+The steps are as follows:
 
 ​		A. The server sends an instruction to query the bicycle information to the charging pile
 
@@ -148,7 +148,7 @@ com.kingmeter.dto.charging.old:
 
 ​		H.The server receives the bicycle information reported by the charging pile , compares it with the information received by B, and finally notifies the business management system of the comparison result.
 
-#### utils : 
+utils : 
 
 ​		The worker is mainly responsible for forwarding messages received by the server to 	specific business implementations (classes in the stragey package).
 rest: 
