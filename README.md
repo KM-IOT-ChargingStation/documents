@@ -130,21 +130,21 @@ acl :
 
 ​		acl is the abbreviation of Anticorruption Layer. It borrows the concept of domain driven design and is mainly used to isolate the underlying communication and business logic, so that all parties do not interfere with each other and achieve isolation and decoupling.
 
-#### Business:
+Business:
 
-code : 	
+​	code : 	
 
 ​			Established according to the function code calibrated on the charging pile tcp communication protocol document.
 
-stragegy : 	
+​	stragegy : 	
 
 ​			All classes in this package implement RequestStrategy, and each function code has 	a corresponding specific implementation. This is the embodiment of the strategy pattern.
 
-tracker :	 
+​	tracker :	 
 
 ​			This is used for ota remote upgrade. We implement ota remote upgrade. 
 
-The steps are as follows:
+​	The steps are as follows:
 
 ​		A. The server sends an instruction to query the bicycle information to the charging pile
 
@@ -165,8 +165,10 @@ The steps are as follows:
 utils : 
 
 ​		The worker is mainly responsible for forwarding messages received by the server to 	specific business implementations (classes in the stragey package).
+
 rest: 
-​		The encapsulation server sends instructions to shield the details of the byte stream. The upper-layer logic only needs to send the model data, and it also includes synchronously waiting for the return result of the charging pile within the set timeout period.
+
+​	The encapsulation server sends instructions to shield the details of the byte stream. The upper-layer logic only needs to send the model data, and it also includes synchronously waiting for the return result of the charging pile within the set timeout period.
 
 ### 6.single-charging-server
 
@@ -205,4 +207,5 @@ rest:
 
 ## VII.Appendix File
 A. logstash configuration file
+
 B. postman config file
