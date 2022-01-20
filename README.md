@@ -22,8 +22,6 @@
 ## III.System Design
 ### 1.Architecture design
 
-
-
 <center><img src="images/frame1.png" width="80%"></center>
 ​	We divide the system into three subsystems :
 
@@ -168,7 +166,6 @@ rest:
 ​		During the test, the communication between the three subsystems uses the http protocol, and the specific communication content can be found in the relevant code. Moreover, if they are all deployed on the same server or different servers in the same LAN, the http performance will not become the bottleneck of data flow.
 
 ​		Obviously, in order to pursue the ultimate performance in the actual operating environment, it is the best for the business system to directly access kingmeter-socket-charging, but this will also slightly increase the system complexity. It is recommended not to do this in the early stage of system access. To achieve the purpose of system decoupling, it is acceptable to lose a little performance, especially when the site equipment does not reach the level of more than 10,000.
-
 
 ## V.System Test
 ​	When we connect the hardware system and the business system, we divide the process into many stages to ensure that each step goes smoothly, and the current step is the guarantee prerequisite for the next step. Please try to follow the steps as much as possible. Although the process will be a little tedious, it is still necessary for troubleshooting. Otherwise, if you start debugging as a whole, once a fault occurs, troubleshooting will be a headache.
