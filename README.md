@@ -238,6 +238,6 @@ rest:
 
 ## VIII.Appendix File
 
-&emsp;&emsp;A. logstash configuration file   ../config
+&emsp;&emsp;A. logstash configuration file  :   ../config
 
-&emsp;&emsp;B. postman config file
+&emsp;&emsp;B. postman config file : ChargingStation.postman_collection.json

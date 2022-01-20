@@ -1,0 +1,982 @@
+{
+	"info": {
+		"_postman_id": "47de946e-9270-41f4-b5e9-86cc9585a359",
+		"name": "ChargingStation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "single-charing-client",
+			"item": [
+				{
+					"name": "mock login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"host\":\"127.0.0.1\",\"port\":7777,\"siteIdStart\":9000000000001,\"deviceCount\":1,\"password\":\"100419\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{clientUriPrefix}}/client/testLogin",
+							"host": [
+								"{{clientUriPrefix}}"
+							],
+							"path": [
+								"client",
+								"testLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mock logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"siteIdStart\":{{siteId}},\"deviceCount\":1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingClientPrex}}/client/disconnect",
+							"host": [
+								"{{chargingClientPrex}}"
+							],
+							"path": [
+								"client",
+								"disconnect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mock bike in dock",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"vehicleId\": {{vehicleId}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingClientPrex}}/client/bikeInDock",
+							"host": [
+								"{{chargingClientPrex}}"
+							],
+							"path": [
+								"client",
+								"bikeInDock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mock swipe card ,data upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"vehicleId\": {{vehicleId}},\n    \"card\": \"2345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingClientPrex}}/client/swingCardUpload",
+							"host": [
+								"{{chargingClientPrex}}"
+							],
+							"path": [
+								"client",
+								"swingCardUpload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mock swipe card confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sid\": {{siteId}},\n    \"kid\": {{dockId}},\n    \"bid\": {{vehicleId}},\n    \"card\": \"12345678\",\n    \"gbs\":0,\n    \"uid\":\"333\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingClientPrex}}/client/swingCardConfirm",
+							"host": [
+								"{{chargingClientPrex}}"
+							],
+							"path": [
+								"client",
+								"swingCardConfirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mock malfunction upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"dockKln\": 1,\n    \"vehicleId\": {{vehicleId}},\n    \"cer\":1,\n    \"ber\":2,\n    \"disp\":3,\n    \"per\":4,\n    \"perlk\":5,\n    \"perws\":6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingClientPrex}}/client/malfunctionUpload",
+							"host": [
+								"{{chargingClientPrex}}"
+							],
+							"path": [
+								"client",
+								"malfunctionUpload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mock dock monitor upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingClientPrex}}/client/dockDataUpload?siteId={{siteId}}&dockId={{dockId}}",
+							"host": [
+								"{{chargingClientPrex}}"
+							],
+							"path": [
+								"client",
+								"dockDataUpload"
+							],
+							"query": [
+								{
+									"key": "siteId",
+									"value": "{{siteId}}"
+								},
+								{
+									"key": "dockId",
+									"value": "{{dockId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "single-charging-server",
+			"item": [
+				{
+					"name": "prod",
+					"item": [
+						{
+							"name": "site",
+							"item": [
+								{
+									"name": "scanUnlock",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"userId\": \"123\",\n    \"minbsoc\": 10\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/site/unLock",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"site",
+												"unLock"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "forceUnlock",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"userId\": \"123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/site/forceUnLock",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"site",
+												"forceUnLock"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "checkDockLock",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{chargingServerPrex}}/site/checkDockLock?siteId={{siteId}}&dockId={{dockId}}&userId=123",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"site",
+												"checkDockLock"
+											],
+											"query": [
+												{
+													"key": "siteId",
+													"value": "{{siteId}}"
+												},
+												{
+													"key": "dockId",
+													"value": "{{dockId}}"
+												},
+												{
+													"key": "userId",
+													"value": "123"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "queryDockInfo",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{chargingServerPrex}}/site/queryFirmwareVersion?siteId={{siteId}}&dockId=0",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"site",
+												"queryFirmwareVersion"
+											],
+											"query": [
+												{
+													"key": "siteId",
+													"value": "{{siteId}}"
+												},
+												{
+													"key": "dockId",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "queryDockAndBikeInfo",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{chargingServerPrex}}/site/queryDockAndBikeInfo?siteId={{siteId}}&dockId=0",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"site",
+												"queryDockAndBikeInfo"
+											],
+											"query": [
+												{
+													"key": "siteId",
+													"value": "{{siteId}}"
+												},
+												{
+													"key": "dockId",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "attach",
+							"item": [
+								{
+									"name": "clear_LockFailed",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"error\": 18\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/attach/clearMalfunction",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"attach",
+												"clearMalfunction"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "clear_UnLockFailed",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"error\": 19\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/attach/clearMalfunction",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"attach",
+												"clearMalfunction"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "clear_CarrierFailed",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"error\": 33\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/attach/clearMalfunction",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"attach",
+												"clearMalfunction"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "setting",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"dataInterval\": 10,\n    \"emptyInterval\": 0,\n    \"repeatTime\": 0,\n    \"beep\": 1,\n    \"monitor\": 0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/attach/setting",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"attach",
+												"setting"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getDeviceMap",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{chargingServerPrex}}/attach/{{siteId}}",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"attach",
+												"{{siteId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ota",
+							"item": [
+								{
+									"name": "upgrade wifimaster",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "secretkey",
+												"value": "{{accesstoken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"type\": \"WDST\",\n    \"version\": \"20211231\",\n    \"httpPort\": 9000,\n    \"fileName\": \"/firmware/V8152_TERM_B_20211231.tlz\",\n    \"fileUrl\": \"39.98.43.59\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/ota/firmware",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"ota",
+												"firmware"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "upgrade dock display",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "secretkey",
+												"type": "text",
+												"value": "{{accesstoken}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"type\": \"DISPLAY\",\n    \"version\": \"20211025\",\n    \"httpPort\": 9000,\n    \"fileName\": \"/firmware/V8152_DISP_B_20211025.tlz\",\n    \"fileUrl\": \"39.98.43.59\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/ota/firmware",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"ota",
+												"firmware"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "upgrade dock display font",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "secretkey",
+												"type": "text",
+												"value": "{{accesstoken}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"type\": \"FONTLIBRARY\",\n    \"version\": \"20211025\",\n    \"httpPort\": 9000,\n    \"fileName\": \"/firmware/V8152_FONT_B_20211025.tlz\",\n    \"fileUrl\": \"39.98.43.59\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/ota/firmware",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"ota",
+												"firmware"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "upgrade dock eicc",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "secretkey",
+												"type": "text",
+												"value": "{{accesstoken}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"type\": \"EICC\",\n    \"version\": \"20210928\",\n    \"httpPort\": 9000,\n    \"fileName\": \"/firmware/V8152_EICC_B_20210928.tlz\",\n    \"fileUrl\": \"39.98.43.59\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/ota/firmware",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"ota",
+												"firmware"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "upgrade dock icpu",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "secretkey",
+												"value": "{{accesstoken}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"siteId\": {{siteId}},\n    \"type\": \"ICPU\",\n    \"version\": \"20211206\",\n    \"httpPort\": 9000,\n    \"fileName\": \"/firmware/V8152_ICPU_B_20211206.tlz\",\n    \"fileUrl\": \"39.98.43.59\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chargingServerPrex}}/ota/firmware",
+											"host": [
+												"{{chargingServerPrex}}"
+											],
+											"path": [
+												"ota",
+												"firmware"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "single-charging-business",
+			"item": [
+				{
+					"name": "queryLoginPermission",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/loginPermission/site/{{siteId}}?msv=\"20210114\"&mhv=\"20180829\"",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"loginPermission",
+								"site",
+								"{{siteId}}"
+							],
+							"query": [
+								{
+									"key": "msv",
+									"value": "\"20210114\""
+								},
+								{
+									"key": "mhv",
+									"value": "\"20180829\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "malfunction data upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"dockKln\": 1,\n    \"bikeId\": {{vehicleId}},\n    \"cer\": 0,\n    \"ber\": 0,\n    \"disp\": 0,\n    \"per\": 0,\n    \"perlk\": 0,\n    \"perws\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/malfunction",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"malfunction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bikeInDock data upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"bikeId\": {{vehicleId}},\n    \"currentTime\": 1610593738\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/bikeInDock",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"bikeInDock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "offline",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/offline/site/{{siteId}}",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"offline",
+								"site",
+								"{{siteId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "swipe card query permission",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/swipeCard/permission/{{card}}?siteId={{siteId}}&dockId={{dockId}}&bikeId={{vehicleId}}&currentTime=1610593738",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"swipeCard",
+								"permission",
+								"{{card}}"
+							],
+							"query": [
+								{
+									"key": "siteId",
+									"value": "{{siteId}}"
+								},
+								{
+									"key": "dockId",
+									"value": "{{dockId}}"
+								},
+								{
+									"key": "bikeId",
+									"value": "{{vehicleId}}"
+								},
+								{
+									"key": "currentTime",
+									"value": "1610593738"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "swip card confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"card\": {{card}},\n    \"siteId\": {{siteId}},\n    \"dockId\": {{dockId}},\n    \"bikeId\": {{vehicleId}},\n    \"userId\": \"123\",\n    \"sls\": 0,\n    \"currentTime\": 1610593738\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/swipeCard/confirm",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"swipeCard",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allDockInfo upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteId\": {{siteId}},\n    \"rpow\": 0,\n    \"dockArray\": [\n        {\n            \"dockId\": {{dockId}},\n            \"dockKln\": 1,\n            \"bikeId\": {{vehicleId}},\n            \"bsoc\": 80\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/allDockInfo",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"allDockInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allDockMonitorData",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"siteId\": {{siteId}},\n    \"dockArray\": [\n        {\n            \"dockId\": {{dockId}},\n            \"dockKln\": 1,\n            \"bikeId\": {{vehicleId}},\n            \"chgv\": 80,\n            \"chgi\": 80,\n            \"bsoc\": 80,\n            \"brang\": 80,\n            \"ipow\": 80,\n            \"itemp\": 80\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/allDockMonitorData",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"allDockMonitorData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "otaTrackerData",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteId\": {{siteId}},\n    \"flag\": true,\n    \"dockIdAndBikeIdMap\": {\n        \"1\": {\n            \"pre_kid\": 1,\n            \"pre_bid\": 2,\n            \"post_kid\": 3,\n            \"post_bid\": 4\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/otaTrackerData",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"otaTrackerData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMemory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/getMemory",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"getMemory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMemory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{chargingBusinessPrex}}/updateMemory?acm=1&expense=1&ret=1&rtm=1&ast=1&minbsoc=11&userId=66",
+							"host": [
+								"{{chargingBusinessPrex}}"
+							],
+							"path": [
+								"updateMemory"
+							],
+							"query": [
+								{
+									"key": "acm",
+									"value": "1"
+								},
+								{
+									"key": "expense",
+									"value": "1"
+								},
+								{
+									"key": "ret",
+									"value": "1"
+								},
+								{
+									"key": "rtm",
+									"value": "1"
+								},
+								{
+									"key": "ast",
+									"value": "1"
+								},
+								{
+									"key": "minbsoc",
+									"value": "11"
+								},
+								{
+									"key": "userId",
+									"value": "66"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
