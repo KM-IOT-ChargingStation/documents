@@ -71,8 +71,11 @@
 ​		This module mainly encapsulates the data model of the round-trip communication between the charging pile and the server.
 
 com.kingmeter.dto.charging.latest: 
+
 ​	it is the new version of the charging pile (with ota) communication data model package
+
 com.kingmeter.dto.charging.old:
+
 ​	it is the old version of the charging pile (without ota) communication data model package
 
 ### 3.kingmeter-utils 
