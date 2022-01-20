@@ -13,7 +13,7 @@
 ​	We used logback in the project to add log anchors for each logical key position, especially the content of hardware and server communication, which were recorded in different categories; then stored in elasticsearch through logstash, and finally viewed by using kibana. Then we will attach the log parsing configuration file for the customer convenience.
 ## III.System Design
 ###1.Architecture design
-![image](https://github.com/KM-IOT-ChargingStation/documents/blob/main/images/frame1.png)
+<center><img src="images/frame1.png" width="80%"></center>
 ​	We divide the system into three subsystems :
 
 ###2.single-charging-client
