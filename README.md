@@ -4,25 +4,25 @@
 
 ### 1.Research Background and Significance
 
-​		After years of developing technology, our company has organized a number of technical engineers to continuously improve and optimize electric bicycle charging pile products step by step. In the process of technical assistance and cooperation with various customer companies, we have taken many detours and summed up a lot of valuable experience. To this end, we have specially developed a server communication framework for the new version of the charging pile (with OTA upgrade function), which is convenient for the customer technical team to seamlessly connect our charging pile products.
+&emsp;&emsp;After years of developing technology, our company has organized a number of technical engineers to continuously improve and optimize electric bicycle charging pile products step by step. In the process of technical assistance and cooperation with various customer companies, we have taken many detours and summed up a lot of valuable experience. To this end, we have specially developed a server communication framework for the new version of the charging pile (with OTA upgrade function), which is convenient for the customer technical team to seamlessly connect our charging pile products.
 
 ## II.System Related Technologies
 ### 1.Netty
 
-​		Since the communication between the charging pile wifimaster and the server uses the socket protocol, we use the mature netty framework in the java system on the server side to handle the functions of receiving messages and issuing instructions.
+&emsp;&emsp;Since the communication between the charging pile wifimaster and the server uses the socket protocol, we use the mature netty framework in the java system on the server side to handle the functions of receiving messages and issuing instructions.
 
 ### 2.Spring Boot
 
-​		Spring Boot realizes automatic configuration, reduces the complexity of project construction, and it can integrate tomcat to provide external web services. It is the most popular web framework technology in java web.
+&emsp;&emsp;Spring Boot realizes automatic configuration, reduces the complexity of project construction, and it can integrate tomcat to provide external web services. It is the most popular web framework technology in java web.
 
 ### 3.ELK
 
-​		We used logback in the project to add log anchors for each logical key position, especially the content of hardware and server communication, which were recorded in different categories; then stored in elasticsearch through logstash, and finally viewed by using kibana. Then we will attach the log parsing configuration file for the customer convenience.
+&emsp;&emsp;We used logback in the project to add log anchors for each logical key position, especially the content of hardware and server communication, which were recorded in different categories; then stored in elasticsearch through logstash, and finally viewed by using kibana. Then we will attach the log parsing configuration file for the customer convenience.
 
 ## III.System Design
 ### 1.Architecture design
 
-​	We divide the system into three subsystems :
+&emsp;&emsp;We divide the system into three subsystems :
 
 
 
@@ -34,14 +34,14 @@
 
 ### 2.single-charging-client
 
-​	Simulate charging pile hardware to realize all protocol contents.
+&emsp;&emsp;Simulate charging pile hardware to realize all protocol contents.
 
 
 
 <center><img src="images/frame2.png" width="80%"></center>
 ​	
 
-​	This system is directly built on the kingmeter-socket-framework, loaded with socket client and web server, and the user requests the http interface provided by postman to simulate the operation of the physical hardware of the charging pile, such as scanning the code to rent a bicycle, the bicycle enters the pile, and fault reporting, etc. This module is designed to test the connectivity and logical correctness of single-charging-server and single-charging-business.
+&emsp;&emsp;This system is directly built on the kingmeter-socket-framework, loaded with socket client and web server, and the user requests the http interface provided by postman to simulate the operation of the physical hardware of the charging pile, such as scanning the code to rent a bicycle, the bicycle enters the pile, and fault reporting, etc. This module is designed to test the connectivity and logical correctness of single-charging-server and single-charging-business.
 
 ### 3.single-charging-server
 
