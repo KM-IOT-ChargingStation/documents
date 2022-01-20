@@ -26,7 +26,7 @@
 
 
 
-<center><img src="images/frame1.png" width="80%"></center>
+<center><img src="images/frame1.png" width="100%"></center>
 
 ​	
 
@@ -38,14 +38,16 @@
 
 
 
-<center><img src="images/frame2.png" width="80%"></center>
+<center><img src="images/frame2.png" width="100%"></center>
+
 ​	
 
 &emsp;&emsp;This system is directly built on the kingmeter-socket-framework, loaded with socket client and web server, and the user requests the http interface provided by postman to simulate the operation of the physical hardware of the charging pile, such as scanning the code to rent a bicycle, the bicycle enters the pile, and fault reporting, etc. This module is designed to test the connectivity and logical correctness of single-charging-server and single-charging-business.
 
 ### 3.single-charging-server
 
-<center><img src="images/frame3.png" width="80%"></center>
+<center><img src="images/frame3.png" width="100%"></center>
+
 &emsp;&emsp;The server program for docking the charging pile hardware includes socket server and web server. The socket server is mainly for docking the charging pile system, and the web server is mainly for docking the business system. The integrated web server here is mainly used to receive the instructions of the business system. Of course, we can use Message Queue, grpc and other technologies to achieve this communication, which can be modified according to customer ideas.
 
 &emsp;&emsp;We mainly explain single-charging-server, and the other two systems are auxiliary systems. In actual operation, they are replaced by the real charging pile wifimaster and the customer's real business operation system.
@@ -58,7 +60,7 @@
 
 &emsp;&emsp;Simulate the business system (user,money,order,trip and other business logic), and it sends commands such as rental order to the single-charging-server
 
-<center><img src="images/frame4.png" width="80%"></center>
+<center><img src="images/frame4.png" width="100%"></center>
 
 ## IV.System Implementation
 
@@ -130,7 +132,7 @@ acl :
 
 &emsp;&emsp;acl is the abbreviation of Anticorruption Layer. It borrows the concept of domain driven design and is mainly used to isolate the underlying communication and business logic, so that all parties do not interfere with each other and achieve isolation and decoupling.
 
-Business:
+usiness:
 
 &emsp;&emsp;code : 	
 
@@ -186,7 +188,8 @@ rest:
 
 ## V.System Test
 &emsp;&emsp;When we connect the hardware system and the business system, we divide the process into many stages to ensure that each step goes smoothly, and the current step is the guarantee prerequisite for the next step. Please try to follow the steps as much as possible. Although the process will be a little tedious, it is still necessary for troubleshooting. Otherwise, if you start debugging as a whole, once a fault occurs, troubleshooting will be a headache.
-<center><img src="images/frame5.png" width="80%"></center>
+<center><img src="images/frame5.png" width="100%"></center>
+
 &emsp;&emsp;Regarding the stress test, single-charging-client can configure the number of simulated devices in the configuration, and users can configure the number of charging pile sites by themselves.
 ## VI.Conclusion and Outlook
 &emsp;&emsp;We can use a variety of programming languages to build a socket server. In the java system, Netty provides an asynchronous, event-driven network application framework and tools to rapidly develop high-performance, high-reliability network servers and client programs. Of course, customer can also use python's tornado for socket server development.
