@@ -1,6 +1,7 @@
 # Description of the underlying framework of the server corresponding to the new version of the charging pile
 
-##I.Introduction
+## I.Introduction
+
 ###1.Research Background and Significance
 ​	After years of developing technology, our company has organized a number of technical engineers to continuously improve and optimize electric bicycle charging pile products step by step. In the process of technical assistance and cooperation with various customer companies, we have taken many detours and summed up a lot of valuable experience. To this end, we have specially developed a server communication framework for the new version of the charging pile (with OTA upgrade function), which is convenient for the customer technical team to seamlessly connect our charging pile products.
 ## II.System Related Technologies
@@ -12,8 +13,9 @@
 ​	We used logback in the project to add log anchors for each logical key position, especially the content of hardware and server communication, which were recorded in different categories; then stored in elasticsearch through logstash, and finally viewed by using kibana. Then we will attach the log parsing configuration file for the customer convenience.
 ## III.System Design
 ###1.Architecture design
-![image](images/frame1.png)
+![image](https://github.com/KM-IOT-ChargingStation/documents/blob/main/images/frame1.png)
 ​	We divide the system into three subsystems :
+
 ###2.single-charging-client
 ​	Simulate charging pile hardware to realize all protocol contents.
 <center><img src="images/frame2.png" width="80%"></center>
