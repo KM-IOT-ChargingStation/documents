@@ -30,7 +30,11 @@
 
 ​	Simulate charging pile hardware to realize all protocol contents.
 
+
+
 <center><img src="images/frame2.png" width="80%"></center>
+​	
+
 ​	This system is directly built on the kingmeter-socket-framework, loaded with socket client and web server, and the user requests the http interface provided by postman to simulate the operation of the physical hardware of the charging pile, such as scanning the code to rent a bicycle, the bicycle enters the pile, and fault reporting, etc. This module is designed to test the connectivity and logical correctness of single-charging-server and single-charging-business.
 
 ### 3.single-charging-server
@@ -49,6 +53,7 @@
 ​		Simulate the business system (user,money,order,trip and other business logic), and it sends commands such as rental order to the single-charging-server
 
 <center><img src="images/frame4.png" width="80%"></center>
+
 ## IV.System Implementation
 
 ### 1.kingmeter-common
