@@ -26,7 +26,7 @@
 
 
 
-<center><img src="images/frame1.png" width="100%"></center>
+<center><img src="https://crazyandy.github.io/static/assets/img/kingmeter/frame1.png" width="100%"></center>
 
 ​	
 
@@ -38,7 +38,7 @@
 
 
 
-<center><img src="images/frame2.png" width="100%"></center>
+<center><img src="https://crazyandy.github.io/static/assets/img/kingmeter/frame2.png" width="100%"></center>
 
 ​	
 
@@ -46,7 +46,7 @@
 
 ### 3.single-charging-server
 
-<center><img src="images/frame3.png" width="100%"></center>
+<center><img src="https://crazyandy.github.io/static/assets/img/kingmeter/frame3.png" width="100%"></center>
 
 &emsp;&emsp;The server program for docking the charging pile hardware includes socket server and web server. The socket server is mainly for docking the charging pile system, and the web server is mainly for docking the business system. The integrated web server here is mainly used to receive the instructions of the business system. Of course, we can use Message Queue, grpc and other technologies to achieve this communication, which can be modified according to customer ideas.
 
@@ -60,7 +60,7 @@
 
 &emsp;&emsp;Simulate the business system (user,money,order,trip and other business logic), and it sends commands such as rental order to the single-charging-server
 
-<center><img src="images/frame4.png" width="100%"></center>
+<center><img src="https://crazyandy.github.io/static/assets/img/kingmeter/frame4.png" width="100%"></center>
 
 ## IV.System Implementation
 
@@ -188,7 +188,7 @@ rest:
 
 ## V.System Test
 &emsp;&emsp;When we connect the hardware system and the business system, we divide the process into many stages to ensure that each step goes smoothly, and the current step is the guarantee prerequisite for the next step. Please try to follow the steps as much as possible. Although the process will be a little tedious, it is still necessary for troubleshooting. Otherwise, if you start debugging as a whole, once a fault occurs, troubleshooting will be a headache.
-<center><img src="images/frame5.png" width="100%"></center>
+<center><img src="https://crazyandy.github.io/static/assets/img/kingmeter/frame5.png" width="100%"></center>
 
 &emsp;&emsp;Regarding the stress test, single-charging-client can configure the number of simulated devices in the configuration, and users can configure the number of charging pile sites by themselves.
 ## VI.Conclusion and Outlook
