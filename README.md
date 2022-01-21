@@ -210,7 +210,7 @@ rest:
 
 ## VII.Source Code
 
-&emsp;&emsp;I created two github organizations , all of the repositories except documents is private . Please email to me (crazyandyisfine@gmail.com) with your github account , then I can invite you into these two organizations.
+&emsp;&emsp;I created two github organizations , all of the repositories are private except documents. Please email to me (crazyandyisfine@gmail.com) with your github account , then I can invite you into these two organizations.
 
 &emsp;&emsp;https://github.com/KM-IOT-BaseFrameWork
 
